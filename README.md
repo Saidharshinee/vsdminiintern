@@ -1,6 +1,14 @@
 # VSD MINI INTERNSHIP
 ## Introduction to Risc
+### The VSDSquadron Mini is a tiny RISC-V development board. It features a 32-bit RISC-V core, multiple clock options, 15 GPIO pins, and various communication ports like SPI and I2C.
+
 ## Features
+##### Processor: 32-bit RISC-V core (RV32EC instruction set)
+##### Clock: Built-in 24MHz RC oscillator (x2 options), external oscillator slot
+##### Memory: 2KB SRAM, 16KB Flash.
+##### I/O: 15 GPIO pins
+##### Communication Interface: USART, I2C, SPI
+##### Watch timer and Real clock timer
 ## Steps involved
 ### 1.Installation of Virtual Box
 ![Screenshot (394)](https://github.com/Saidharshinee/vsdminiintern/assets/170953134/5f62ae3a-d472-4338-b7da-0dea937f1d09)
