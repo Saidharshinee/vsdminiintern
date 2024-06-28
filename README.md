@@ -15,4 +15,12 @@
 
 
 ![Screenshot 2024-06-28 230805](https://github.com/Saidharshinee/vsdminiintern/assets/170953134/dc675bdc-5dd3-4cad-afbc-f7bb48519bcc)
+### 5.Conversion of C code into RISC intruction Set
+###### Using the command riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c
 
+
+![Screenshot (397)](https://github.com/Saidharshinee/vsdminiintern/assets/170953134/89096eeb-2e14-4467-8b5e-07b8e5aecce3)
+### 6.Calculation of Risc -v 
+
+
+![Screenshot (398)](https://github.com/Saidharshinee/vsdminiintern/assets/170953134/14f5c5f1-b038-4209-a3b9-6cbf2800df40)
