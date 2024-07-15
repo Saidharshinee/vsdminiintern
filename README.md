@@ -32,3 +32,98 @@
 
 
 ![Screenshot (398)](https://github.com/Saidharshinee/vsdminiintern/assets/170953134/14f5c5f1-b038-4209-a3b9-6cbf2800df40)
+
+
+
+## Task 2
+### SMART ELEVATOR CONTROLLER
+### 1. C code for Elevator
+#### Creating the file using the command leafpad elevator.c &
+#####    #include <stdio.h>
+ #include <stdbool.h>
+
+#define NUM_FLOORS 10
+#define NUM_ELEVATORS 1
+
+// Elevator states
+typedef enum {
+    IDLE,
+    MOVING_UP,
+    MOVING_DOWN,
+    DOOR_OPEN,
+    DOOR_CLOSED
+} ElevatorState;
+
+// Elevator struct
+typedef struct {
+    int currentFloor;
+    ElevatorState state;
+} Elevator;
+
+// Function prototypes
+void initializeElevator(Elevator *elevator);
+void moveElevator(Elevator *elevator, int targetFloor);
+void openDoor(Elevator *elevator);
+void closeDoor(Elevator *elevator);
+
+int main() {
+    Elevator elevators[NUM_ELEVATORS];
+    int targetFloor;
+
+    // Initialize elevator(s)
+    for (int i = 0; i < NUM_ELEVATORS; i++) {
+        initializeElevator(&elevators[i]);
+    }
+
+    // Example scenario: Request to go to floor 5
+    targetFloor = 5;
+
+    // Assuming there's only one elevator in this example
+    moveElevator(&elevators[0], targetFloor);
+
+    return 0;
+}
+
+void initializeElevator(Elevator *elevator) {
+    elevator->currentFloor = 1;  // Start at floor 1
+    elevator->state = IDLE;
+}
+
+void moveElevator(Elevator *elevator, int targetFloor) {
+    if (elevator->currentFloor < targetFloor) {
+        elevator->state = MOVING_UP;
+        printf("Elevator moving up...\n");
+        while (elevator->currentFloor < targetFloor) {
+            elevator->currentFloor++;
+            // Simulating movement delay
+            printf("Floor %d\n", elevator->currentFloor);
+        }
+    } else if (elevator->currentFloor > targetFloor) {
+        elevator->state = MOVING_DOWN;
+        printf("Elevator moving down...\n");
+        while (elevator->currentFloor > targetFloor) {
+            elevator->currentFloor--;
+            // Simulating movement delay
+            printf("Floor %d\n", elevator->currentFloor);
+        }
+    }
+
+    // Arrived at target floor
+    elevator->state = DOOR_OPEN;
+    openDoor(elevator);
+    closeDoor(elevator);
+}
+
+void openDoor(Elevator *elevator) {
+    elevator->state = DOOR_OPEN;
+    printf("Elevator door opening...\n");
+    // Simulating door opening delay
+    printf("Door opened.\n");
+}
+
+void closeDoor(Elevator *elevator) {
+    elevator->state = DOOR_CLOSED;
+    // Simulating door closing delay
+    printf("Elevator door closing...\n");
+    printf("Door closed.\n");
+}
