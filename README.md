@@ -39,8 +39,8 @@
 ### SMART ELEVATOR CONTROLLER
 ### 1. C code for Elevator
 #### Creating the file using the command leafpad elevator.c &
-#####    #include <stdio.h>
- #include <stdbool.h>
+#include <stdio.h>
+#include <stdbool.h>
 
 #define NUM_FLOORS 10
 #define NUM_ELEVATORS 1
