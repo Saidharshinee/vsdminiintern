@@ -156,7 +156,7 @@ Jumper Wires
 ### PIN DIAGRAM
 ![Screenshot (404)](https://github.com/user-attachments/assets/9ac34524-881d-40bd-bc4a-2af0e43834de)
 ### CODE
-#include <stdio.h>
+ // #include <stdio.h>
 #include <stdint.h>
 #include "CH32V003.h" // Include the appropriate header file for the CH32V003 processor
 #include "lcd.h"      // Include your LCD library header
