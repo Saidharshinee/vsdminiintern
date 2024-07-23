@@ -131,6 +131,25 @@ void closeDoor(Elevator *elevator) {
 ![Screenshot (400)](https://github.com/user-attachments/assets/86f23431-68ed-48ef-873e-8a528c1ae1d3)
 ![Screenshot (401)](https://github.com/user-attachments/assets/f6d51de7-ffdd-44cb-8a4b-b11e6b98c769)
 
+#### OVERVIEW
+### The Smart Elevator Controller project leverages ultrasonic sensing technology, the CH32V003 RISC-V processor, a servo motor, a touch sensor, and an LED display to create an automated and user-friendly elevator control system. This system operates by detecting the presence and position of individuals within the elevator using an ultrasonic sensor, which sends signals to the CH32V003 RISC-V processor. Upon receiving these signals, the processor activates a servo motor to move the elevator to the appropriate floor, uses touch sensors to determine the current floor, and displays the floor number using LEDs. This setup ensures seamless, efficient, and safe operation of the elevator, enhancing user convenience and safety by eliminating the need for manual control.
+### COMPONENTS REQUIRED
+## CH32V003X
+
+Ultrasonic Sensor (HC-SR04)
+
+Servo Motor (e.g., MG90S)
+
+Touch Sensor
+
+LED Lights
+
+Resistors (appropriate values for LEDs)
+
+Breadboard
+
+Jumper Wires
+
 ![Screenshot (402)](https://github.com/user-attachments/assets/dd7fe80d-62cc-4852-b1ce-cb225387f6b1)
 
 ![Screenshot (403)](https://github.com/user-attachments/assets/3485b59e-6dbd-46ed-aa83-d6750babb415)
