@@ -267,5 +267,6 @@ int main(void) {
     }
 
     return 0;
-}'''
+}
+'''
 ## TASK 7
