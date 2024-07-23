@@ -130,11 +130,15 @@ void closeDoor(Elevator *elevator) {
 
 ![Screenshot (400)](https://github.com/user-attachments/assets/86f23431-68ed-48ef-873e-8a528c1ae1d3)
 ![Screenshot (401)](https://github.com/user-attachments/assets/f6d51de7-ffdd-44cb-8a4b-b11e6b98c769)
+![Screenshot (402)](https://github.com/user-attachments/assets/dd7fe80d-62cc-4852-b1ce-cb225387f6b1)
+
+![Screenshot (403)](https://github.com/user-attachments/assets/3485b59e-6dbd-46ed-aa83-d6750babb415)
 
 #### OVERVIEW
 ### The Smart Elevator Controller project leverages ultrasonic sensing technology, the CH32V003 RISC-V processor, a servo motor, a touch sensor, and an LED display to create an automated and user-friendly elevator control system. This system operates by detecting the presence and position of individuals within the elevator using an ultrasonic sensor, which sends signals to the CH32V003 RISC-V processor. Upon receiving these signals, the processor activates a servo motor to move the elevator to the appropriate floor, uses touch sensors to determine the current floor, and displays the floor number using LEDs. This setup ensures seamless, efficient, and safe operation of the elevator, enhancing user convenience and safety by eliminating the need for manual control.
 ### COMPONENTS REQUIRED
-## CH32V003X
+## 
+CH32V003X
 
 Ultrasonic Sensor (HC-SR04)
 
@@ -149,9 +153,118 @@ Resistors (appropriate values for LEDs)
 Breadboard
 
 Jumper Wires
+### PIN DIAGRAM
+![Screenshot (404)](https://github.com/user-attachments/assets/9ac34524-881d-40bd-bc4a-2af0e43834de)
+### CODE
+#include <stdio.h>
+#include <stdint.h>
+#include "CH32V003.h" // Include the appropriate header file for the CH32V003 processor
+#include "lcd.h"      // Include your LCD library header
+#include "delay.h"    // Include a delay library for timing
 
-![Screenshot (402)](https://github.com/user-attachments/assets/dd7fe80d-62cc-4852-b1ce-cb225387f6b1)
+// Pin definitions
+#define TRIG_PIN    PC0
+#define ECHO_PIN    PC1
+#define SERVO_PIN   PD1
+#define TOUCH_PIN   PD2
+#define LED1_PIN    PC2
+#define LED2_PIN    PC3
 
-![Screenshot (403)](https://github.com/user-attachments/assets/3485b59e-6dbd-46ed-aa83-d6750babb415)
+void GPIO_Init() {
+    // Initialize GPIO pins for output/input
+    // Setup TRIG_PIN, SERVO_PIN, LED1_PIN, LED2_PIN as outputs
+    // Setup ECHO_PIN, TOUCH_PIN as inputs
+    // You need to write specific code to initialize the GPIO pins as per your hardware setup
+}
 
+void Ultrasonic_Init() {
+    // Initialize the ultrasonic sensor
+    GPIO_Init();
+}
 
+uint32_t Ultrasonic_Read() {
+    uint32_t duration, distance;
+
+    // Trigger the ultrasonic sensor
+    GPIO_WriteBit(TRIG_PIN, Bit_SET);
+    delay_us(10); // 10 microseconds pulse
+    GPIO_WriteBit(TRIG_PIN, Bit_RESET);
+
+    // Measure the echo time
+    while (GPIO_ReadInputDataBit(ECHO_PIN) == Bit_RESET); // Wait for the echo to start
+    duration = 0;
+    while (GPIO_ReadInputDataBit(ECHO_PIN) == Bit_SET) {
+        duration++;
+        delay_us(1);
+    }
+
+    // Calculate the distance in centimeters
+    distance = (duration / 2) / 29.1;
+
+    return distance;
+}
+
+void Servo_Init() {
+    // Initialize the servo motor
+    GPIO_Init();
+}
+
+void Servo_SetAngle(uint8_t angle) {
+    // Set the servo motor to a specific angle
+    // Convert angle to pulse width
+    uint16_t pulse_width = 1000 + ((angle * 1000) / 180); // 1ms to 2ms pulse width for 0 to 180 degrees
+    GPIO_WriteBit(SERVO_PIN, Bit_SET);
+    delay_us(pulse_width);
+    GPIO_WriteBit(SERVO_PIN, Bit_RESET);
+    delay_us(20000 - pulse_width); // 20ms period - pulse width
+}
+
+void LED_DisplayFloor(uint8_t floor) {
+    // Display the current floor using LEDs
+    GPIO_WriteBit(LED1_PIN, (floor == 0) ? Bit_SET : Bit_RESET);
+    GPIO_WriteBit(LED2_PIN, (floor == 1) ? Bit_SET : Bit_RESET);
+}
+
+uint8_t TouchSensor_Read() {
+    // Read the current floor from the touch sensor
+    if (GPIO_ReadInputDataBit(TOUCH_PIN) == Bit_SET) {
+        return 1; // Assuming touch sensor indicates the first floor
+    }
+    return 0; // Assuming no touch indicates the ground floor
+}
+
+int main(void) {
+    uint32_t distance;
+    uint8_t current_floor = 0;
+
+    // Initialize all components
+    Ultrasonic_Init();
+    Servo_Init();
+    GPIO_Init();
+
+    while (1) {
+        // Read distance from the ultrasonic sensor
+        distance = Ultrasonic_Read();
+
+        // Determine the floor based on the distance
+        if (distance < 10) {
+            current_floor = TouchSensor_Read();
+        }
+
+        // Move the servo motor to the corresponding floor
+        if (current_floor == 0) {
+            Servo_SetAngle(0); // Move to ground floor
+        } else if (current_floor == 1) {
+            Servo_SetAngle(90); // Move to first floor
+        }
+
+        // Display the current floor using LEDs
+        LED_DisplayFloor(current_floor);
+
+        // Small delay before the next measurement
+        delay_ms(500);
+    }
+
+    return 0;
+}
+## TASK 7
