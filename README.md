@@ -39,9 +39,7 @@
 ### SMART ELEVATOR CONTROLLER
 ### 1. C code for Elevator
 #### Creating the file using the command leafpad elevator.c &
-``
-``
-``
+```
 #include <stdio.h>
 #include <stdbool.h>
 #define NUM_FLOORS 10
@@ -129,9 +127,7 @@ void closeDoor(Elevator *elevator) {
     printf("Elevator door closing...\n");
     printf("Door closed.\n");
 }
-``
-``
-``
+```
 
 
 ![Screenshot (400)](https://github.com/user-attachments/assets/86f23431-68ed-48ef-873e-8a528c1ae1d3)
@@ -163,7 +159,8 @@ Jumper Wires
 ![Screenshot (404)](https://github.com/user-attachments/assets/9ac34524-881d-40bd-bc4a-2af0e43834de)
 ### CODE
 
-' ' ' #include <stdio.h>
+```
+ #include <stdio.h>
 #include <stdint.h>
 #include "CH32V003.h" // Include the appropriate header file for the CH32V003 processor
 #include "lcd.h"      // Include your LCD library header
@@ -274,7 +271,7 @@ int main(void) {
 
     return 0;
 }
-' ' '
+```
 ## TASK 7
 ## CIRCUIT CONNECTION FOR SMART ELEVATOR CONTROLLER
 ###  Ultrasonic Sensor Connections
