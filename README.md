@@ -39,7 +39,6 @@
 ### SMART ELEVATOR CONTROLLER
 ### 1. C code for Elevator
 #### Creating the file using the command leafpad elevator.c &
-#### 
 ''
 ''
 ''
