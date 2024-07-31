@@ -40,7 +40,9 @@
 ### 1. C code for Elevator
 #### Creating the file using the command leafpad elevator.c &
 #### 
-'''' 
+''
+''
+''
 #include <stdio.h>
 #include <stdbool.h>
 #define NUM_FLOORS 10
@@ -128,6 +130,8 @@ void closeDoor(Elevator *elevator) {
     printf("Elevator door closing...\n");
     printf("Door closed.\n");
 }
+'''
+'''
 '''
 
 ![Screenshot (400)](https://github.com/user-attachments/assets/86f23431-68ed-48ef-873e-8a528c1ae1d3)
