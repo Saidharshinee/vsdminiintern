@@ -327,3 +327,8 @@ int main(void) {
 #### Function: Completes the circuit to control the LEDs.
 This setup ensures that the CH32V003 RISC-V processor can effectively interface with the ultrasonic sensor, servo motor, touch sensor, and LED lights to control and monitor the elevator system.
 
+#### Final demonstration of Smart Elevator System
+
+
+https://github.com/user-attachments/assets/33798d11-421b-4937-bb4c-0450f67a1661
+
