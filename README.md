@@ -270,3 +270,58 @@ int main(void) {
 }
 ' ' '
 ## TASK 7
+## CIRCUIT CONNECTION FOR SMART ELEVATOR CONTROLLER
+## Ultrasonic Sensor Connections
+Trigger Pin (TRIG):
+
+Sensor Pin: TRIG
+Processor Pin: PC0
+Function: Initiates the ultrasonic pulse from the sensor.
+Echo Pin (ECHO):
+
+Sensor Pin: ECHO
+Processor Pin: PC1
+Function: Receives the reflected pulse signal indicating the distance.
+Power Connections:
+
+Sensor Pin: VCC
+Processor Pin: VCC (Voltage Supply)
+Sensor Pin: GND
+Processor Pin: GND (Ground)
+Servo Motor Connections
+Control Pin:
+
+Servo Motor Pin: Control
+Processor Pin: PD1
+Function: Controls the servo motor's movement.
+Power Connections:
+
+Servo Motor Pin: VCC
+Processor Pin: VCC (Voltage Supply)
+Servo Motor Pin: GND
+Processor Pin: GND (Ground)
+Touch Sensor Connections
+Output Pin:
+
+Sensor Pin: Output
+Processor Pin: PD2
+Function: Sends signals to the processor to determine the current floor.
+Power Connections:
+
+Sensor Pin: VCC
+Processor Pin: VCC (Voltage Supply)
+Sensor Pin: GND
+Processor Pin: GND (Ground)
+LED Lights Connections
+Anode Pins:
+
+LED Pin: Anode (each LED)
+Processor Pins: PC2, PC3, PC4, PC5 (each through a current-limiting resistor)
+Function: Controls the LEDs to display the floor number.
+Cathode Pins:
+
+LED Pin: Cathode (each LED)
+Processor Pin: GND (Ground)
+Function: Completes the circuit to control the LEDs.
+This setup ensures that the CH32V003 RISC-V processor can effectively interface with the ultrasonic sensor, servo motor, touch sensor, and LED lights to control and monitor the elevator system.
+
